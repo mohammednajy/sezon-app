@@ -27,9 +27,6 @@ class AuthService extends GetxController {
   createUser(UserModel user) async {
     var ref = await _db.collection('Users').add(user.toJson());
     SharedPrefController().login(user);
-    print(ref.id);
-    print(
-        'id herrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr');
     SharedPrefController().setId(id: ref.id);
   }
 

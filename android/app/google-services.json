@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "211428303989",
+    "project_id": "sezon-app-6d877",
+    "storage_bucket": "sezon-app-6d877.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:211428303989:android:b2cf03528c3c9da9a8c43c",
+        "android_client_info": {
+          "package_name": "com.example.sezon_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "211428303989-5cemhgmprhkd7a8rn9h6kq65qef26gtd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sezon_app",
+            "certificate_hash": "7500bedbe78c6e33f8f9546c8ccf86ec74cbe409"
+          }
+        },
+        {
+          "client_id": "211428303989-s9cohnk3rgioom07a75hqvscs3n3cjom.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEKKQ-3wu3_KxUz_kIti4-mBVKkKyH3Ko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "211428303989-s9cohnk3rgioom07a75hqvscs3n3cjom.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "211428303989-52junaj9dghr71v6hpdk2t9tvkn7kctu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.sezonApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

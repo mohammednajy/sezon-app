@@ -1,0 +1,65 @@
+import 'package:get/get_navigation/src/root/internacionalization.dart';
+
+class Languages extends Translations {
+  @override
+  Map<String, Map<String, String>> get keys => {
+        'en': {
+          'login': 'Login',
+          'userName': 'User Name',
+          'name': 'mohammed naji',
+          'password': 'password',
+          'forget_your_password': 'you forget your password?',
+          'don\'t_have_account': 'you don\'t have an account ',
+          'new_account': 'newAccount',
+          'this_field_required': 'This field is required',
+          'valid_email': 'Enter valid email',
+          'password_grater_than_8': 'enter password grater than 8 character',
+          'valid_phone': 'enter valid phone number, start +972 or +970',
+          'valid_name': 'enter valid name',
+          'just_number': 'enter just number',
+          'create_new_account': 'create new account',
+          'phone_number': 'phone number',
+          'password_confirmation': 'password confirmation',
+          'register_account': 'register',
+          'have_account': 'have an account ',
+          'verification_code': 'verification code',
+          'otp_message': 'we send verification code for this phone number',
+          'send': 'send',
+          'home': 'home',
+          'category': 'category',
+          'orders': 'orders',
+          'favorite': 'favorite',
+          'search_world_here': 'Search world here',
+          'products':'products'
+        },
+        'ar': {
+          'login': 'تسجيل الدخول',
+          'userName': 'اسم المستخدم',
+          'name': 'محمد ناجي',
+          'password': 'كلمة المرور',
+          'forget_your_password': 'هل نسيت كلمة المرور؟',
+          'don\'t_have_account': 'ليس لديك حساب؟ ',
+          'new_account': 'حساب جديد',
+          'this_field_required': 'هذا الحقل مطلوب',
+          'valid_email': 'ادخل ايميل صالح',
+          'password_grater_than_8': 'ادخل كلمة مرور اكبر من 8 احرف',
+          'valid_phone': 'ادخل رقم هاتف صالح يبدأ ب +972 او +970',
+          'valid_name': 'ادخل اسم صحيح ',
+          'just_number': 'مسموح ادخال ارقام فقط',
+          'create_new_account': 'إنشاء حساب جديد',
+          'phone_number': 'رقم الهاتف',
+          'password_confirmation': 'تأكيد كلمة المرور',
+          'register_account': 'تسجيل حساب',
+          'have_account': 'هل لديك حساب؟ ',
+          'verification_code': 'رمز التحقق',
+          'otp_message': 'لقد قمنا بارسال رمز التحقق إلى هذا \nالرقم ',
+          'send': 'أرسل',
+          'home': 'الرئيسية',
+          'category': 'الفئات',
+          'orders': 'طلباتي',
+          'favorite': 'المفضلة',
+          'search_world_here': 'كلمة البحث هنا',
+          'products':'المنتجات'
+        }
+      };
+}

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sezon_app/models/user_model.dart';
 import 'package:sezon_app/services/authServices/phone_auth_exceptions.dart';
-import 'package:sezon_app/views/router/route_name.dart';
+import 'package:sezon_app/feature/router/route_name.dart';
 
 import '../sharedPref/shared_pref.dart';
 

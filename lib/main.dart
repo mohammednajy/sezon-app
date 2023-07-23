@@ -7,8 +7,8 @@ import 'package:sezon_app/services/authServices/auth_service.dart';
 import 'package:sezon_app/services/sharedPref/shared_pref.dart';
 import 'package:sezon_app/utils/languages.dart';
 import 'package:sezon_app/utils/theme_manager.dart';
-import 'package:sezon_app/views/router/route_name.dart';
-import 'package:sezon_app/views/router/router.dart';
+import 'package:sezon_app/feature/router/route_name.dart';
+import 'package:sezon_app/feature/router/router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
       getPages: AppRoute.routes,
       translations: Languages(),
       locale: Locale('ar'),
+      
     );
   }
 }

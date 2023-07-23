@@ -35,21 +35,23 @@ class HomeScreen extends StatelessWidget {
             builder: (controller) {
               return SizedBox(
                 height: 75,
-                child: controller.categoryLoading
-                    ? const CircularProgressIndicator()
-                    : ListView.separated(
-                        physics: const BouncingScrollPhysics(),
-                        scrollDirection: Axis.horizontal,
-                        itemCount: controller.categories.length,
-                        separatorBuilder: (context, index) => const SizedBox(
-                          width: 10,
-                        ),
-                        itemBuilder: (context, index) => CategoryWidget(
+                child: ListView.separated(
+                  physics: const BouncingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: controller.categoryLoading
+                      ? 10
+                      : controller.categories.length,
+                  separatorBuilder: (context, index) => const SizedBox(
+                    width: 10,
+                  ),
+                  itemBuilder: (context, index) => controller.categoryLoading
+                      ? const CircularProgressIndicator()
+                      : CategoryWidget(
                           category: controller.categories[index].name,
                           onTap: () {},
                           image: controller.categories[index].image,
                         ),
-                      ),
+                ),
               );
             },
           ),
@@ -61,7 +63,8 @@ class HomeScreen extends StatelessWidget {
             init: HomeController(),
             builder: (homeController) {
               return homeController.productsLoading
-                  ? const CircularProgressIndicator()
+                  ? const SizedBox(
+                      height: 50, width: 50, child: CircularProgressIndicator())
                   : GridView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),

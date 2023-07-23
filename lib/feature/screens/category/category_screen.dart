@@ -53,6 +53,9 @@ class CategoryScreen extends GetView<CategoryController> {
                                     categoryController.categories[index].name,
                                 onTap: () {
                                   categoryController.changedIndex(index);
+                                  categoryController.getProductsCategory(
+                                      categoryId: categoryController
+                                          .categories[index].id);
                                 },
                               ),
                               Container(
@@ -77,30 +80,35 @@ class CategoryScreen extends GetView<CategoryController> {
                 ),
               ),
               Expanded(
-                child: Container(
-                  color: Colors.white,
-                  child: GridView.builder(
-                    padding: const EdgeInsets.only(
-                      left: 22,
-                      right: 22,
-                      top: 22,
-                    ),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            childAspectRatio: 0.67,
-                            crossAxisSpacing: 10,
-                            mainAxisSpacing: 10),
-                    itemBuilder: (_, index) => ProductWidget(
-                      imageHeight: 83,
-                      favoriteSize: 15,
-                      image: categoryController.allProducts[index].image,
-                      name: categoryController.allProducts[index].name,
-                      price: categoryController.allProducts[index].price,
-                    ),
-                    itemCount: categoryController.allProducts.length,
-                  ),
-                ),
+                child: categoryController.cateogyloading
+                    ? Center(child: CircularProgressIndicator())
+                    : Container(
+                        color: Colors.white,
+                        child: GridView.builder(
+                          padding: const EdgeInsets.only(
+                            left: 22,
+                            right: 22,
+                            top: 22,
+                          ),
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  childAspectRatio: 0.67,
+                                  crossAxisSpacing: 10,
+                                  mainAxisSpacing: 10),
+                          itemBuilder: (_, index) => ProductWidget(
+                            imageHeight: 83,
+                            favoriteSize: 15,
+                            image: categoryController
+                                .productsCategory[index].image,
+                            name:
+                                categoryController.productsCategory[index].name,
+                            price: categoryController
+                                .productsCategory[index].price,
+                          ),
+                          itemCount: categoryController.productsCategory.length,
+                        ),
+                      ),
               )
             ],
           ),

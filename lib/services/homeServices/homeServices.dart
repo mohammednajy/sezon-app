@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:get/get.dart';
 import 'package:sezon_app/models/categoy_model.dart';
 import 'package:sezon_app/models/products_model.dart';
 

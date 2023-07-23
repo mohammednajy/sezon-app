@@ -10,12 +10,16 @@ class CategoryController extends GetxController {
 
   List<CategoryModel> categories = [];
   List<ProductModel> allProducts = [];
+  List<ProductModel> productsCategory = [];
 
   bool loading = false;
+  bool cateogyloading = false;
+
   getCategories() async {
     loading = true;
     update();
     categories = await HomeService.instance.getCategories();
+    getProductsCategory(categoryId: categories[0].id);
     update();
     loading = false;
     update();
@@ -25,7 +29,6 @@ class CategoryController extends GetxController {
   void onInit() {
     super.onInit();
     getCategories();
-    getAllProducts();
   }
 
   changedIndex(int value) {
@@ -33,13 +36,32 @@ class CategoryController extends GetxController {
     update();
   }
 
-  getAllProducts() async {
-    loading = true;
-    update();
-    allProducts = await HomeService.instance.getAllProducts();
+  // getAllProducts() async {
+  //   loading = true;
+  //   update();
+  //   allProducts = await HomeService.instance.getAllProducts();
 
+  //   update();
+  //   loading = false;
+  //   update();
+  // }
+
+  getProductsCategory({required String categoryId}) async {
+    cateogyloading = true;
     update();
-    loading = false;
+    List<ProductModel> newProductsList = [];
+    List<ProductModel> data = await HomeService.instance.getAllProducts();
+    for (ProductModel item in data) {
+      print(categoryId);
+      print(item.id);
+      if (categoryId == item.category) {
+        newProductsList.add(item);
+        update();
+      }
+    }
+    productsCategory = newProductsList;
+    update();
+    cateogyloading = false;
     update();
   }
 }

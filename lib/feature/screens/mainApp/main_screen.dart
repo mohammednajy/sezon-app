@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:sezon_app/utils/color_manager.dart';
 import 'package:sezon_app/feature/screens/mainApp/main_controller.dart';
 
-import '../home/home_controller.dart';
+import '../home/Home/home_controller.dart';
 
 class MainScreen extends GetView<MainController> {
   const MainScreen({super.key});

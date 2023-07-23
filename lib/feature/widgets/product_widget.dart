@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sezon_app/feature/router/route_name.dart';
+import 'package:sezon_app/models/products_model.dart';
 
-import '../../utils/assets_path.dart';
 import '../../utils/color_manager.dart';
 import '../../utils/style_manager.dart';
 
@@ -11,20 +11,19 @@ class ProductWidget extends StatelessWidget {
     required this.imageHeight,
     this.favoriteSize = 18,
     super.key,
-    required this.image,
-    required this.name,
-    required this.price,
+
+    required this.productModel,
   });
+
   final double imageHeight;
   final double favoriteSize;
-  final String image;
-  final String name;
-  final String price;
+
+  final ProductModel productModel;
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.toNamed(RouteName.productDetailsRoute);
+        Get.toNamed(RouteName.productDetailsRoute,arguments: productModel);
       },
       child: Stack(
         alignment: Alignment.topLeft,
@@ -60,18 +59,18 @@ class ProductWidget extends StatelessWidget {
                   child: Hero(
                     tag: UniqueKey(),
                     child: Image.network(
-                      image,
+                      productModel.image,
                       fit: BoxFit.fill,
                     ),
                   ),
                 ),
                 Text(
-                  name,
+                  productModel.name,
                   style: StyleManager.headline3,
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  '$price ر.س',
+                  '${productModel.price} ر.س',
                   style: StyleManager.smallText(
                     color: ColorManager.redColor,
                     fontWeight: FontWeight.bold,
@@ -84,7 +83,6 @@ class ProductWidget extends StatelessWidget {
             padding: const EdgeInsets.only(top: 20, left: 20),
             child: InkWell(
               onTap: () {
-                print('object');
               },
               child: CircleAvatar(
                 backgroundColor: Colors.white.withOpacity(0.20000000298023224),

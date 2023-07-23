@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
 import 'package:sezon_app/feature/router/route_name.dart';
 import 'package:sezon_app/feature/screens/auth/register/register_binding.dart';
-import 'package:sezon_app/feature/screens/home/product_details.dart';
+import 'package:sezon_app/feature/screens/home/details/details_binding.dart';
+import 'package:sezon_app/feature/screens/home/details/product_details.dart';
 import 'package:sezon_app/feature/screens/mainApp/main_screen.dart';
 
 import '../screens/auth/login/login_binding.dart';
@@ -34,7 +35,7 @@ class AppRoute {
     GetPage(
         name: RouteName.productDetailsRoute,
         page: () => const ProductDetailScreen(),
-        binding: MainBinding()),
+        binding: DetailBinding()),
 
         GetPage(
         name: RouteName.profileRoute,

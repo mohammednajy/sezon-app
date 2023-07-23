@@ -4,7 +4,7 @@ import 'package:sezon_app/models/tab_model.dart';
 
 import '../category/category_screen.dart';
 import '../favorite/favorite_screen.dart';
-import '../home/home_screen.dart';
+import '../home/Home/home_screen.dart';
 import '../orders/orders_screen.dart';
 
 class MainController extends GetxController {

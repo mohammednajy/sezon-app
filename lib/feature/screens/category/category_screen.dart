@@ -99,12 +99,8 @@ class CategoryScreen extends GetView<CategoryController> {
                           itemBuilder: (_, index) => ProductWidget(
                             imageHeight: 83,
                             favoriteSize: 15,
-                            image: categoryController
-                                .productsCategory[index].image,
-                            name:
-                                categoryController.productsCategory[index].name,
-                            price: categoryController
-                                .productsCategory[index].price,
+                            productModel:
+                                categoryController.productsCategory[index],
                           ),
                           itemCount: categoryController.productsCategory.length,
                         ),

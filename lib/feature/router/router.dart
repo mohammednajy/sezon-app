@@ -30,7 +30,7 @@ class AppRoute {
         binding: OtpBinding()),
     GetPage(
         name: RouteName.mainRoute,
-        page: () => const MainScreen(),
+        page: () =>  MainScreen(),
         binding: MainBinding()),
     GetPage(
         name: RouteName.productDetailsRoute,

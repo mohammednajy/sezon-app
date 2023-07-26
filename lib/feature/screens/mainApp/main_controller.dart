@@ -15,7 +15,6 @@ class MainController extends GetxController {
     currentIndex.value = index;
   }
 
-  
   List<TabModel> tabs = [
     TabModel(icon: Icons.home, label: 'home'),
     TabModel(icon: Icons.grid_view, label: 'category'),
@@ -24,8 +23,8 @@ class MainController extends GetxController {
   ];
   final pages = [
     const HomeScreen(),
-     CategoryScreen(),
+    CategoryScreen(),
     const OrdersScreen(),
-    const FavoriteScreen()
+    FavoriteScreen()
   ];
 }

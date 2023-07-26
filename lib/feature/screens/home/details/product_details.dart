@@ -134,7 +134,9 @@ class ProductDetailScreen extends GetView<DetailsController> {
               children: [
                 Expanded(
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        controller.addToFavorites(Get.arguments);
+                      },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
                           shadowColor: Colors.white,

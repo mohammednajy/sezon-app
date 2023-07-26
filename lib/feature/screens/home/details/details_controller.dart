@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:sezon_app/feature/screens/favorite/favorite_controller.dart';
 import 'package:sezon_app/models/categoy_model.dart';
+import 'package:sezon_app/services/favoriteService/favorite_service.dart';
 import 'package:sezon_app/services/homeServices/homeServices.dart';
 
 import '../../../../models/products_model.dart';
@@ -28,5 +30,14 @@ class DetailsController extends GetxController {
     }
     productsCategory = newProductsList;
     update();
+  }
+
+  addToFavorites(ProductModel productModel) async {
+    try {
+      await FavoriteService.instance.addToFavorite(productModel);
+      print('successfully added');
+    } catch (e) {
+      print(e);
+    }
   }
 }

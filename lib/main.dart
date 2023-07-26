@@ -10,13 +10,17 @@ import 'package:sezon_app/utils/theme_manager.dart';
 import 'package:sezon_app/feature/router/route_name.dart';
 import 'package:sezon_app/feature/router/router.dart';
 
+import 'feature/screens/favorite/favorite_controller.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await SharedPrefController().init();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
       .then((value) {
     Get.put(AuthService());
+  
   });
-  await SharedPrefController().init();
+
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
   ));
@@ -41,7 +45,6 @@ class MyApp extends StatelessWidget {
       getPages: AppRoute.routes,
       translations: Languages(),
       locale: Locale('ar'),
-      
     );
   }
 }

@@ -14,8 +14,9 @@ class FavoriteService {
           .where('userId', isEqualTo: SharedPrefController().getId())
           .get();
 
-      List<ProductModel> favoriteProduct =
-          snapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
+      List<ProductModel> favoriteProduct = snapshot.docs
+          .map((e) => ProductModel.fromSnapshotForFavorites(e))
+          .toList();
       return favoriteProduct;
     } on Exception catch (e) {
       print(e);

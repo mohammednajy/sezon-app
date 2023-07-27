@@ -10,7 +10,6 @@ import 'package:sezon_app/utils/theme_manager.dart';
 import 'package:sezon_app/feature/router/route_name.dart';
 import 'package:sezon_app/feature/router/router.dart';
 
-import 'feature/screens/favorite/favorite_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

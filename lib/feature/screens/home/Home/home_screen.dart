@@ -45,7 +45,10 @@ class HomeScreen extends StatelessWidget {
                     width: 10,
                   ),
                   itemBuilder: (context, index) => controller.categoryLoading
-                      ? const CircularProgressIndicator()
+                      ? SizedBox(
+                          height: 30,
+                          width: 30,
+                          child: const CircularProgressIndicator())
                       : CategoryWidget(
                           category: controller.categories[index].name,
                           onTap: () {},
@@ -63,8 +66,12 @@ class HomeScreen extends StatelessWidget {
             init: HomeController(),
             builder: (homeController) {
               return homeController.productsLoading
-                  ? const SizedBox(
-                      height: 50, width: 50, child: CircularProgressIndicator())
+                  ? const Align(
+                      child: SizedBox(
+                          height: 50,
+                          width: 50,
+                          child: CircularProgressIndicator()),
+                    )
                   : GridView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),

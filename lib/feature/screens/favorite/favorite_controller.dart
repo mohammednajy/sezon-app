@@ -7,7 +7,9 @@ class FavoriteController extends GetxController {
   bool loading = false;
   @override
   void onInit() {
+    print('objectobjectobjectobjectobjectobjectobjectobject');
     super.onInit();
+
     getFavorite();
   }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sezon_app/feature/screens/favorite/favorite_controller.dart';
 import 'package:sezon_app/feature/screens/home/details/details_controller.dart';
 import 'package:sezon_app/feature/widgets/product_widget.dart';
 import 'package:sezon_app/utils/color_manager.dart';
@@ -135,7 +136,8 @@ class ProductDetailScreen extends GetView<DetailsController> {
                 Expanded(
                   child: ElevatedButton(
                       onPressed: () {
-                        controller.addToFavorites(Get.arguments);
+                        Get.find<FavoriteController>()
+                            .addToFavorites(Get.arguments);
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,

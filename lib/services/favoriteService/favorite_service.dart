@@ -36,8 +36,14 @@ class FavoriteService {
 
   deleteFromFavorite(String id) async {
     try {
-      await _firestore.collection('favorites').doc(id).delete();
-      print('deleted successfully');
+      await _firestore
+          .collection('favorites')
+          .where('id', isEqualTo: id)
+          .get()
+          .then((value) => value.docs.forEach((element) {
+                element.reference.delete();
+                print('deleted successfully');
+              }));
     } on Exception catch (e) {
       print(e);
     }

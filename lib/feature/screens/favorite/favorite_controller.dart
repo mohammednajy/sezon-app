@@ -7,7 +7,6 @@ class FavoriteController extends GetxController {
   bool loading = false;
   @override
   void onInit() {
-    print('objectobjectobjectobjectobjectobjectobjectobject');
     super.onInit();
 
     getFavorite();
@@ -23,8 +22,19 @@ class FavoriteController extends GetxController {
   }
 
   deleteFavorite(String id) async {
-    await FavoriteService.instance.deleteFromFavorite(id);
-    await getFavorite();
+    favorites.removeWhere((element) => element.id == id);
     update();
+    await FavoriteService.instance.deleteFromFavorite(id);
+    update();
+  }
+
+  addToFavorites(ProductModel productModel) async {
+    try {
+      favorites.add(productModel);
+      update();
+      await FavoriteService.instance.addToFavorite(productModel);
+    } catch (e) {
+      print(e);
+    }
   }
 }

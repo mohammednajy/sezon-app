@@ -7,7 +7,7 @@ import 'package:sezon_app/models/products_model.dart';
 import '../../utils/color_manager.dart';
 import '../../utils/style_manager.dart';
 
-class ProductWidget extends GetView<FavoriteController> {
+class ProductWidget extends StatefulWidget {
   const ProductWidget({
     required this.imageHeight,
     this.favoriteSize = 18,
@@ -19,11 +19,24 @@ class ProductWidget extends GetView<FavoriteController> {
   final double favoriteSize;
 
   final ProductModel productModel;
+
+  @override
+  State<ProductWidget> createState() => _ProductWidgetState();
+}
+
+class _ProductWidgetState extends State<ProductWidget> {
+  @override
+  void initState() {
+    super.initState();
+    print('initstateinitstateinitstateinitstateinitstateinitstate');
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.toNamed(RouteName.productDetailsRoute, arguments: productModel);
+        Get.toNamed(RouteName.productDetailsRoute,
+            arguments: widget.productModel);
       },
       child: Stack(
         alignment: Alignment.topLeft,
@@ -47,7 +60,7 @@ class ProductWidget extends GetView<FavoriteController> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
-                  height: imageHeight,
+                  height: widget.imageHeight,
                   width: double.infinity,
                   padding: EdgeInsets.zero,
                   // margin: const EdgeInsets.only(bottom: 10),
@@ -59,18 +72,18 @@ class ProductWidget extends GetView<FavoriteController> {
                   child: Hero(
                     tag: UniqueKey(),
                     child: Image.network(
-                      productModel.image,
+                      widget.productModel.image,
                       fit: BoxFit.fill,
                     ),
                   ),
                 ),
                 Text(
-                  productModel.name,
+                  widget.productModel.name,
                   style: StyleManager.headline3,
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  '${productModel.price} ر.س',
+                  '${widget.productModel.price} ر.س',
                   style: StyleManager.smallText(
                     color: ColorManager.redColor,
                     fontWeight: FontWeight.bold,
@@ -84,16 +97,22 @@ class ProductWidget extends GetView<FavoriteController> {
               padding: const EdgeInsets.only(top: 20, left: 20),
               child: InkWell(
                 onTap: () {
-                  print('objectobjectobject');
+                  controller.favorites.any(
+                    (element) {
+                      return element.id == widget.productModel.id;
+                    },
+                  )
+                      ? controller.deleteFavorite(widget.productModel.id)
+                      : controller.addToFavorites(widget.productModel);
                 },
                 child: CircleAvatar(
                   backgroundColor:
                       Colors.white.withOpacity(0.20000000298023224),
-                  radius: favoriteSize,
+                  radius: widget.favoriteSize,
                   child: Icon(
                       controller.favorites.any(
                         (element) {
-                          return element.id == productModel.id;
+                          return element.id == widget.productModel.id;
                         },
                       )
                           ? Icons.favorite

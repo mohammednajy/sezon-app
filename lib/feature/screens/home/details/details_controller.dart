@@ -32,12 +32,5 @@ class DetailsController extends GetxController {
     update();
   }
 
-  addToFavorites(ProductModel productModel) async {
-    try {
-      await FavoriteService.instance.addToFavorite(productModel);
-      print('successfully added');
-    } catch (e) {
-      print(e);
-    }
-  }
+
 }

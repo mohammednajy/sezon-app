@@ -7,6 +7,7 @@ import '../../../utils/style_manager.dart';
 import '../../widgets/custome_appbar.dart';
 
 class FavoriteScreen extends GetView<FavoriteController> {
+  var cont = Get.put(FavoriteController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(

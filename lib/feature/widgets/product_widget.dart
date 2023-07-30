@@ -7,7 +7,7 @@ import 'package:sezon_app/models/products_model.dart';
 import '../../utils/color_manager.dart';
 import '../../utils/style_manager.dart';
 
-class ProductWidget extends StatefulWidget {
+class ProductWidget extends StatelessWidget {
   const ProductWidget({
     required this.imageHeight,
     this.favoriteSize = 18,
@@ -20,23 +20,14 @@ class ProductWidget extends StatefulWidget {
 
   final ProductModel productModel;
 
-  @override
-  State<ProductWidget> createState() => _ProductWidgetState();
-}
-
-class _ProductWidgetState extends State<ProductWidget> {
-  @override
-  void initState() {
-    super.initState();
-    print('initstateinitstateinitstateinitstateinitstateinitstate');
-  }
-
+ 
+ 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
         Get.toNamed(RouteName.productDetailsRoute,
-            arguments: widget.productModel);
+            arguments: productModel);
       },
       child: Stack(
         alignment: Alignment.topLeft,
@@ -60,7 +51,7 @@ class _ProductWidgetState extends State<ProductWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
-                  height: widget.imageHeight,
+                  height: imageHeight,
                   width: double.infinity,
                   padding: EdgeInsets.zero,
                   // margin: const EdgeInsets.only(bottom: 10),
@@ -72,18 +63,18 @@ class _ProductWidgetState extends State<ProductWidget> {
                   child: Hero(
                     tag: UniqueKey(),
                     child: Image.network(
-                      widget.productModel.image,
+                      productModel.image,
                       fit: BoxFit.fill,
                     ),
                   ),
                 ),
                 Text(
-                  widget.productModel.name,
+                  productModel.name,
                   style: StyleManager.headline3,
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  '${widget.productModel.price} ر.س',
+                  '${productModel.price} ر.س',
                   style: StyleManager.smallText(
                     color: ColorManager.redColor,
                     fontWeight: FontWeight.bold,
@@ -99,20 +90,20 @@ class _ProductWidgetState extends State<ProductWidget> {
                 onTap: () {
                   controller.favorites.any(
                     (element) {
-                      return element.id == widget.productModel.id;
+                      return element.id == productModel.id;
                     },
                   )
-                      ? controller.deleteFavorite(widget.productModel.id)
-                      : controller.addToFavorites(widget.productModel);
+                      ? controller.deleteFavorite(productModel.id)
+                      : controller.addToFavorites(productModel);
                 },
                 child: CircleAvatar(
                   backgroundColor:
                       Colors.white.withOpacity(0.20000000298023224),
-                  radius: widget.favoriteSize,
+                  radius: favoriteSize,
                   child: Icon(
                       controller.favorites.any(
                         (element) {
-                          return element.id == widget.productModel.id;
+                          return element.id == productModel.id;
                         },
                       )
                           ? Icons.favorite

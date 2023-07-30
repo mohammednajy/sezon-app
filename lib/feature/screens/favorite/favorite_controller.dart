@@ -15,26 +15,37 @@ class FavoriteController extends GetxController {
   getFavorite() async {
     loading = true;
     update();
-    favorites = await FavoriteService.instance.getAllFavorite();
-    update();
-    loading = false;
-    update();
+    final data = await FavoriteService.instance.getAllFavorite();
+
+    data.fold((l) {
+      favorites = l;
+      loading = false;
+      update();
+    }, (r) {
+      loading = false;
+      update();
+      Get.snackbar("Error", 'Something went wrong');
+    });
   }
 
   deleteFavorite(String id) async {
     favorites.removeWhere((element) => element.id == id);
     update();
-    await FavoriteService.instance.deleteFromFavorite(id);
-    update();
+    final data = await FavoriteService.instance.deleteFromFavorite(id);
+    Get.snackbar("Success", 'Deleted from the favorites successfully');
+    if (data == false) {
+      Get.snackbar("Error", 'Something went wrong, try again');
+    }
   }
 
   addToFavorites(ProductModel productModel) async {
-    try {
-      favorites.add(productModel);
-      update();
-      await FavoriteService.instance.addToFavorite(productModel);
-    } catch (e) {
-      print(e);
+    favorites.add(productModel);
+    update();
+    final data = await FavoriteService.instance.addToFavorite(productModel);
+    if (data) {
+      Get.snackbar("Success", 'Added to the favorites successfully');
+    } else {
+      Get.snackbar("Error", 'Something went wrong, try again');
     }
   }
 }

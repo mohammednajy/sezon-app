@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../utils/assets_path.dart';
-import '../../../utils/style_manager.dart';
+import '../../../../utils/assets_path.dart';
+import '../../../../utils/style_manager.dart';
 
 class OnProgressOrders extends StatelessWidget {
   const OnProgressOrders({super.key});

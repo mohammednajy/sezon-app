@@ -6,6 +6,7 @@ import 'package:sezon_app/utils/style_manager.dart';
 class ThemeManager {
   static var theme = ThemeData(
     brightness: Brightness.light,
+    scaffoldBackgroundColor: Colors.white,
     fontFamily: 'Tajawal',
     useMaterial3: true,
     inputDecorationTheme: InputDecorationTheme(

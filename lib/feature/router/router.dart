@@ -4,6 +4,7 @@ import 'package:sezon_app/feature/screens/auth/register/register_binding.dart';
 import 'package:sezon_app/feature/screens/home/details/details_binding.dart';
 import 'package:sezon_app/feature/screens/home/details/product_details.dart';
 import 'package:sezon_app/feature/screens/mainApp/main_screen.dart';
+import 'package:sezon_app/feature/screens/orders/ui/purchase_completion_screen.dart';
 
 import '../screens/auth/login/login_binding.dart';
 import '../screens/auth/login/login_screen.dart';
@@ -30,16 +31,19 @@ class AppRoute {
         binding: OtpBinding()),
     GetPage(
         name: RouteName.mainRoute,
-        page: () =>  MainScreen(),
+        page: () => MainScreen(),
         binding: MainBinding()),
     GetPage(
         name: RouteName.productDetailsRoute,
         page: () => const ProductDetailScreen(),
         binding: DetailBinding()),
-
-        GetPage(
+    GetPage(
         name: RouteName.profileRoute,
         page: () => const ProfileScreen(),
         binding: ProfileBinding()),
+    GetPage(
+      name: RouteName.purchaseCompletionRoute,
+      page: () =>  PurchaseCompletionScreen(),
+    )
   ];
 }

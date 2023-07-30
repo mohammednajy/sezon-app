@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sezon_app/feature/router/route_name.dart';
 import 'package:sezon_app/feature/screens/favorite/favorite_controller.dart';
 import 'package:sezon_app/feature/screens/home/details/details_controller.dart';
 import 'package:sezon_app/feature/widgets/product_widget.dart';
@@ -71,14 +72,14 @@ class ProductDetailScreen extends GetView<DetailsController> {
                   physics: const NeverScrollableScrollPhysics(),
                   children: [
                     Text(
-                      Get.arguments.name,
+                      Get.arguments?.name ?? '',
                       style: StyleManager.headline1(fontSize: 16),
                     ),
                     const SizedBox(
                       height: 10,
                     ),
                     Text(
-                      '${Get.arguments.price} ر.س',
+                      '${Get.arguments?.price ?? ''} ر.س',
                       style: StyleManager.smallText(
                         color: ColorManager.redColor,
                         fontWeight: FontWeight.bold,
@@ -133,31 +134,42 @@ class ProductDetailScreen extends GetView<DetailsController> {
             padding: const EdgeInsets.symmetric(horizontal: 26),
             child: Row(
               children: [
-                Expanded(
-                  child: ElevatedButton(
-                      onPressed: () {
-                        Get.find<FavoriteController>()
-                            .addToFavorites(Get.arguments);
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          shadowColor: Colors.white,
-                          surfaceTintColor: Colors.white,
-                          shape: const RoundedRectangleBorder(
-                              side: BorderSide(color: ColorManager.redColor),
-                              borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(5),
-                                  bottomRight: Radius.circular(5)))),
-                      child: Text(
-                        'إضافة إلى المفضلة',
-                        style: StyleManager.smallText(
-                            fontWeight: FontWeight.bold,
-                            color: ColorManager.redColor),
-                      )),
+                GetBuilder<FavoriteController>(
+                  builder: (favoritesController) => Expanded(
+                    child: ElevatedButton(
+                        onPressed: () {
+                          favoritesController.favorites.any(
+                            (element) {
+                              return element.id == Get.arguments.id;
+                            },
+                          )
+                              ? Get.snackbar("Info",
+                                  "This product already added to the favorites")
+                              : Get.find<FavoriteController>()
+                                  .addToFavorites(Get.arguments);
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            shadowColor: Colors.white,
+                            surfaceTintColor: Colors.white,
+                            shape: const RoundedRectangleBorder(
+                                side: BorderSide(color: ColorManager.redColor),
+                                borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(5),
+                                    bottomRight: Radius.circular(5)))),
+                        child: Text(
+                          'إضافة إلى المفضلة',
+                          style: StyleManager.smallText(
+                              fontWeight: FontWeight.bold,
+                              color: ColorManager.redColor),
+                        )),
+                  ),
                 ),
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(RouteName.purchaseCompletionRoute);
+                    },
                     style: ElevatedButton.styleFrom(
                         shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(

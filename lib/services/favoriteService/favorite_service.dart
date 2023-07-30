@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dartz/dartz.dart';
 import 'package:sezon_app/models/products_model.dart';
 import 'package:sezon_app/services/sharedPref/shared_pref.dart';
 
@@ -7,7 +8,7 @@ class FavoriteService {
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Future<List<ProductModel>> getAllFavorite() async {
+  Future<Either<List<ProductModel>, bool>> getAllFavorite() async {
     try {
       var snapshot = await _firestore
           .collection('favorites')
@@ -17,24 +18,25 @@ class FavoriteService {
       List<ProductModel> favoriteProduct = snapshot.docs
           .map((e) => ProductModel.fromSnapshotForFavorites(e))
           .toList();
-      return favoriteProduct;
+      return left(favoriteProduct);
     } on Exception catch (e) {
-      print(e);
-      return [];
+   
+      return right(false);
     }
   }
 
-  addToFavorite(ProductModel productModel) async {
+  Future<bool> addToFavorite(ProductModel productModel) async {
     try {
       await _firestore
           .collection('favorites')
           .add(productModel.toJson(uId: SharedPrefController().getId()));
-    } on Exception catch (e) {
-      print(e);
+      return true;
+    }   catch (e) {
+      return false;
     }
   }
 
-  deleteFromFavorite(String id) async {
+  Future<bool> deleteFromFavorite(String id) async {
     try {
       await _firestore
           .collection('favorites')
@@ -42,10 +44,10 @@ class FavoriteService {
           .get()
           .then((value) => value.docs.forEach((element) {
                 element.reference.delete();
-                print('deleted successfully');
               }));
-    } on Exception catch (e) {
-      print(e);
+      return true;
+    }  catch (e) {
+      return false;
     }
   }
 }
